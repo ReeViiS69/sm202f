@@ -1,0 +1,1 @@
+cmd_drivers/video/fbdev/exynos/dpu_7885/dsim.o := ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/video/fbdev/exynos/dpu_7885/dsim.o drivers/video/fbdev/exynos/dpu_7885/dsim_drv.o 

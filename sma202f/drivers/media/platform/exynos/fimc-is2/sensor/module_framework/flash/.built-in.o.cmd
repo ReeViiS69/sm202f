@@ -1,0 +1,1 @@
+cmd_drivers/media/platform/exynos/fimc-is2/sensor/module_framework/flash/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/media/platform/exynos/fimc-is2/sensor/module_framework/flash/built-in.o drivers/media/platform/exynos/fimc-is2/sensor/module_framework/flash/fimc-is-flash-gpio.o 

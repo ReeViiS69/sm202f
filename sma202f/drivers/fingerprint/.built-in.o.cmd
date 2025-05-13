@@ -1,0 +1,1 @@
+cmd_drivers/fingerprint/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/fingerprint/built-in.o drivers/fingerprint/fingerprint_sysfs.o drivers/fingerprint/et5xx-spi.o drivers/fingerprint/et5xx-spi_data_transfer.o 

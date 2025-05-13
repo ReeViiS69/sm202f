@@ -1,0 +1,1 @@
+cmd_drivers/misc/tzdev/3.0/teec/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/misc/tzdev/3.0/teec/built-in.o drivers/misc/tzdev/3.0/teec/context.o drivers/misc/tzdev/3.0/teec/misc.o drivers/misc/tzdev/3.0/teec/session.o drivers/misc/tzdev/3.0/teec/shared_memory.o 

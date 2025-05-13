@@ -1,0 +1,1 @@
+cmd_drivers/misc/tui/platforms/exynos7885/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/misc/tui/platforms/exynos7885/built-in.o drivers/misc/tui/platforms/exynos7885/stui_hal_display.o drivers/misc/tui/platforms/exynos7885/stui_hal_touch.o 

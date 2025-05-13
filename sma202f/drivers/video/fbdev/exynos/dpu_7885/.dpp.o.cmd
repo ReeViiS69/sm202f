@@ -1,0 +1,1 @@
+cmd_drivers/video/fbdev/exynos/dpu_7885/dpp.o := ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/video/fbdev/exynos/dpu_7885/dpp.o drivers/video/fbdev/exynos/dpu_7885/dpp_drv.o 

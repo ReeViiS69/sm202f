@@ -1,0 +1,1 @@
+cmd_sound/soc/samsung/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o sound/soc/samsung/built-in.o sound/soc/samsung/abox/built-in.o sound/soc/samsung/exynos7885_cod3035.o sound/soc/samsung/jack_cod3035_sysfs_cb.o 

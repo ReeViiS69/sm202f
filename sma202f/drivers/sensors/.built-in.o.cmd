@@ -1,0 +1,1 @@
+cmd_drivers/sensors/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/sensors/built-in.o drivers/sensors/sensors_core.o drivers/sensors/lsm6dsl_core.o drivers/sensors/lsm6dsl_i2c.o drivers/sensors/yas_mag_drv-yas539.o drivers/sensors/yas_mag_kernel.o drivers/sensors/gp2ap110s.o drivers/sensors/tc3xxk.o 

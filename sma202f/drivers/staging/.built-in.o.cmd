@@ -1,0 +1,1 @@
+cmd_drivers/staging/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/staging/built-in.o drivers/staging/staging.o drivers/staging/media/built-in.o drivers/staging/iio/built-in.o drivers/staging/android/built-in.o drivers/staging/samsung/built-in.o drivers/staging/sti/built-in.o 

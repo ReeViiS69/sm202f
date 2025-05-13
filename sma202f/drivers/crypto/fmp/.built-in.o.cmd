@@ -1,0 +1,1 @@
+cmd_drivers/crypto/fmp/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/crypto/fmp/built-in.o drivers/crypto/fmp/smu_dev.o drivers/crypto/fmp/fmp_dev.o drivers/crypto/fmp/fmp_lib.o drivers/crypto/fmp/sha256.o drivers/crypto/fmp/fmp_derive_iv.o 

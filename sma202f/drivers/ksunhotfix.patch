@@ -1,0 +1,61 @@
+From f19372f72b28f49afa36c86c103931353b221bda Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Thu, 8 May 2025 19:18:02 +0200
+Subject: [PATCH] manual insert of ksun hooks, pty.c already adjusted for
+ different code by samsung
+
+---
+ input/input.c | 10 ++++++++++
+ tty/pty.c     |  8 +++++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/input/input.c b/input/input.c
+index 312c37c..2704d34 100644
+--- a/input/input.c
++++ b/input/input.c
+@@ -852,12 +852,22 @@ void input_booster_init()
+  * to 'seed' initial state of a switch or initial position of absolute
+  * axis, etc.
+  */
++#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_WITH_KPROBES)
++extern bool ksu_input_hook __read_mostly;
++extern int ksu_handle_input_handle_event(unsigned int *type, unsigned int *code, int *value);
++#endif
++
+ void input_event(struct input_dev *dev,
+ 		 unsigned int type, unsigned int code, int value)
+ {
+ 	unsigned long flags;
+ 	int idx;
+ 
++#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_WITH_KPROBES)
++	if (unlikely(ksu_input_hook))
++		ksu_handle_input_handle_event(&type, &code, &value);
++#endif
++
+ 	if (is_event_supported(type, dev->evbit, EV_MAX)) {
+ 
+ 		spin_lock_irqsave(&dev->event_lock, flags);
+diff --git a/tty/pty.c b/tty/pty.c
+index c8a2e5b..2135f7f 100644
+--- a/tty/pty.c
++++ b/tty/pty.c
+@@ -648,11 +648,17 @@ static struct tty_struct *ptm_unix98_lookup(struct tty_driver *driver,
+  *	This provides our locking for the tty pointer.
+  */
+ 
++#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_WITH_KPROBES)
++extern int ksu_handle_devpts(struct inode*);
++#endif
++
+ static struct tty_struct *pts_unix98_lookup(struct tty_driver *driver,
+ 		struct inode *pts_inode, int idx)
+ {
+ 	struct tty_struct *tty;
+-
++#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_WITH_KPROBES)
++	ksu_handle_devpts((struct inode *)pts_inode);
++#endif
+ 	mutex_lock(&devpts_mutex);
+ 	tty = devpts_get_priv(pts_inode);
+ 	mutex_unlock(&devpts_mutex);

@@ -1,0 +1,1 @@
+cmd_fs/sdcardfs/r/sdcardfs.o := ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o fs/sdcardfs/r/sdcardfs.o fs/sdcardfs/r/dentry.o fs/sdcardfs/r/file.o fs/sdcardfs/r/inode.o fs/sdcardfs/r/main.o fs/sdcardfs/r/super.o fs/sdcardfs/r/lookup.o fs/sdcardfs/r/mmap.o fs/sdcardfs/r/packagelist.o fs/sdcardfs/r/derived_perm.o 

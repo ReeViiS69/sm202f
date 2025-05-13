@@ -1,0 +1,1 @@
+cmd_drivers/misc/tui/built-in.o :=  ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-ld -EL   -r -o drivers/misc/tui/built-in.o drivers/misc/tui/main.o drivers/misc/tui/stui_core.o drivers/misc/tui/stui_inf.o drivers/misc/tui/platforms/exynos7885/built-in.o 
