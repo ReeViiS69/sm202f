@@ -8,12 +8,12 @@
 // -I include -I ./arch/arm64/include/uapi
 // -I arch/arm64/include/generated/uapi -I ./include/uapi
 // -I include/generated/uapi
-// -iprefix /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
+// -iprefix /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
 // -D __KERNEL__ -D ANDROID_VERSION=110000 -D ANDROID_MAJOR_VERSION=r
 // -D CONFIG_AS_LSE=1 -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
 // -D KBUILD_BASENAME=KBUILD_STR(devicetable_offsets)
 // -D KBUILD_MODNAME=KBUILD_STR(devicetable_offsets)
-// -isystem /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
+// -isystem /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
 // -include ./include/linux/kconfig.h
 // -MD scripts/mod/.devicetable-offsets.s.d
 // scripts/mod/devicetable-offsets.c -mbionic -mlittle-endian
@@ -1050,8 +1050,6 @@ main:
 	.string	"unsigned char"
 .LASF15:
 	.string	"main"
-.LASF14:
-	.string	"/home/fab/sma202f"
 .LASF7:
 	.string	"long unsigned int"
 .LASF6:
@@ -1060,6 +1058,8 @@ main:
 	.string	"_Bool"
 .LASF9:
 	.string	"char"
+.LASF14:
+	.string	"/home/fab/android4.4.177_ksun_susfs/sma202f"
 .LASF10:
 	.string	"long int"
 .LASF12:

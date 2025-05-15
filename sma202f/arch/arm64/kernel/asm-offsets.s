@@ -8,12 +8,12 @@
 // -I include -I ./arch/arm64/include/uapi
 // -I arch/arm64/include/generated/uapi -I ./include/uapi
 // -I include/generated/uapi
-// -iprefix /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
+// -iprefix /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
 // -D __KERNEL__ -D ANDROID_VERSION=110000 -D ANDROID_MAJOR_VERSION=r
 // -D CONFIG_AS_LSE=1 -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
 // -D KBUILD_BASENAME=KBUILD_STR(asm_offsets)
 // -D KBUILD_MODNAME=KBUILD_STR(asm_offsets)
-// -isystem /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
+// -isystem /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
 // -include ./include/linux/kconfig.h
 // -MD arch/arm64/kernel/.asm-offsets.s.d arch/arm64/kernel/asm-offsets.c
 // -mbionic -mlittle-endian -mgeneral-regs-only -mabi=lp64
@@ -91,7 +91,7 @@
 	.global	main
 	.type	main, %function
 main:
-.LFB2264:
+.LFB2263:
 	.file 1 "arch/arm64/kernel/asm-offsets.c"
 	.loc 1 35 0
 	.cfi_startproc
@@ -521,7 +521,7 @@ main:
 	mov	w0, 0	//,
 	ret
 	.cfi_endproc
-.LFE2264:
+.LFE2263:
 	.size	main, .-main
 	.text
 .Letext0:
@@ -18990,8 +18990,8 @@ main:
 	.byte	0x1
 	.byte	0x22
 	.4byte	0x29
-	.8byte	.LFB2264
-	.8byte	.LFE2264-.LFB2264
+	.8byte	.LFB2263
+	.8byte	.LFE2263-.LFB2263
 	.uleb128 0x1
 	.byte	0x9c
 	.uleb128 0x3c
@@ -20145,14 +20145,14 @@ main:
 	.byte	0
 	.2byte	0
 	.2byte	0
-	.8byte	.LFB2264
-	.8byte	.LFE2264-.LFB2264
+	.8byte	.LFB2263
+	.8byte	.LFE2263-.LFB2263
 	.8byte	0
 	.8byte	0
 	.section	.debug_ranges,"",%progbits
 .Ldebug_ranges0:
-	.8byte	.LFB2264
-	.8byte	.LFE2264
+	.8byte	.LFB2263
+	.8byte	.LFE2263
 	.8byte	0
 	.8byte	0
 	.section	.debug_line,"",%progbits
@@ -21238,6 +21238,8 @@ main:
 	.string	"tp2_value"
 .LASF393:
 	.string	"private_algo_mode"
+.LASF1951:
+	.string	"/home/fab/android4.4.177_ksun_susfs/sma202f"
 .LASF1807:
 	.string	"start_prevent_time"
 .LASF1797:
@@ -22384,8 +22386,6 @@ main:
 	.string	"vm_pgoff"
 .LASF304:
 	.string	"get_unmapped_area"
-.LASF1951:
-	.string	"/home/fab/sma202f"
 .LASF403:
 	.string	"units"
 .LASF1299:

@@ -8,12 +8,12 @@
 // -I include -I ./arch/arm64/include/uapi
 // -I arch/arm64/include/generated/uapi -I ./include/uapi
 // -I include/generated/uapi
-// -iprefix /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
+// -iprefix /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/
 // -D __KERNEL__ -D ANDROID_VERSION=110000 -D ANDROID_MAJOR_VERSION=r
 // -D CONFIG_AS_LSE=1 -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
 // -D KBUILD_BASENAME=KBUILD_STR(bounds)
 // -D KBUILD_MODNAME=KBUILD_STR(bounds)
-// -isystem /home/fab/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
+// -isystem /home/fab/android4.4.177_ksun_susfs/sma202f/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/../lib/gcc/aarch64-linux-android/4.9.x/include
 // -include ./include/linux/kconfig.h -MD kernel/.bounds.s.d
 // kernel/bounds.c -mbionic -mlittle-endian -mgeneral-regs-only -mabi=lp64
 // -auxbase-strip kernel/bounds.s -g -Os -Wall -Wundef -Wstrict-prototypes
@@ -598,8 +598,6 @@ main:
 	.ascii	"aliasing -fno-common -fno-asynchronous-unwind-tables -fno-pi"
 	.ascii	"c -fno-delete-n"
 	.string	"ull-pointer-checks -fstack-protector-strong -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fstack-check=no -fconserve-stack --param allow-store-data-races=0"
-.LASF53:
-	.string	"/home/fab/sma202f"
 .LASF4:
 	.string	"unsigned int"
 .LASF13:
@@ -650,6 +648,8 @@ main:
 	.string	"panic_timeout"
 .LASF11:
 	.string	"_Bool"
+.LASF53:
+	.string	"/home/fab/android4.4.177_ksun_susfs/sma202f"
 .LASF32:
 	.string	"PG_mlocked"
 	.ident	"GCC: (GNU) 4.9.x 20150123 (prerelease)"
