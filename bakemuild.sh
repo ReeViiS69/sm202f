@@ -100,7 +100,7 @@ export ANDROID_MAJOR_VERSION=r
 export ARCH=arm64
 make exynos7885-a20e_defconfig
 chmod u+w ./scripts/setlocalversion ./scripts/mkcompile_h
-perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT Wed Jun 28 08:22:22 +0700 2023"}' ./scripts/mkcompile_h
+perl -pi -e 's{^UTS_VERSION="\$UTS_VERSION\s+\$CONFIG_FLAGS\s+\$TIMESTAMP"}{UTS_VERSION="#1 SMP PREEMPT Wed Jun 28 08:22:22 +0700 2023"}' ./sma202f/scripts/mkcompile_h
 sed -i '$s|echo "\$res"|echo "-26555245"|' ./scripts/setlocalversion
 export PLATFORM_VERSION=11
 export ANDROID_MAJOR_VERSION=r
