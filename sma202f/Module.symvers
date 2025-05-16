@@ -3113,6 +3113,7 @@
 0x3bea86f5	tcp_check_req	vmlinux	EXPORT_SYMBOL
 0xb48d9119	tty_port_tty_hangup	vmlinux	EXPORT_SYMBOL_GPL
 0x0c60108c	netlink_unicast	vmlinux	EXPORT_SYMBOL
+0x2f293782	path_umount	vmlinux	EXPORT_SYMBOL_GPL
 0xea36a914	tcp_init_sock	vmlinux	EXPORT_SYMBOL
 0xf11ddd96	usb_serial_generic_read_bulk_callback	vmlinux	EXPORT_SYMBOL_GPL
 0xaf348da7	cpu_pm_exit	vmlinux	EXPORT_SYMBOL_GPL

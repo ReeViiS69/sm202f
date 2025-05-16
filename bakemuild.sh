@@ -88,6 +88,9 @@ cp ../susfs.c.workingcgpt ./fs/susfs.c
 cp ../open.c.workingcgpt ./fs/open.c
 cp ../read_write.c.workingcgpt ./fs/read_write.c
 cp ../apk_sign.c.workingcgpt ./KernelSU-Next/kernel/apk_sign.c
+cp ../namespace.c.working ./fs/namespace.c
+chmod u+w ./kernel/cgroup.c
+cp ../cgroup.c.working ./kernel/cgroup.c
 #modulesnotworkingfix
 chmod u+w ./security/selinux/hooks.c
 cp ../hooks.c.workingf19f ./security/selinux/hooks.c
@@ -100,11 +103,16 @@ export ANDROID_MAJOR_VERSION=r
 export ARCH=arm64
 make exynos7885-a20e_defconfig
 chmod u+w ./scripts/setlocalversion ./scripts/mkcompile_h
-perl -pi -e 's{^UTS_VERSION="\$UTS_VERSION\s+\$CONFIG_FLAGS\s+\$TIMESTAMP"}{UTS_VERSION="#1 SMP PREEMPT Wed Jun 28 08:22:22 +0700 2023"}' ./sma202f/scripts/mkcompile_h
+perl -pi -e 's{^UTS_VERSION="\$UTS_VERSION\s+\$CONFIG_FLAGS\s+\$TIMESTAMP"}{UTS_VERSION="#1 SMP PREEMPT Wed Jun 28 08:22:22 +07 2023"}' ./scripts/mkcompile_h
 sed -i '$s|echo "\$res"|echo "-26555245"|' ./scripts/setlocalversion
 export PLATFORM_VERSION=11
 export ANDROID_MAJOR_VERSION=r
 export ARCH=arm64
 #ksun adding functions not working
 chmod u+w ./fs/internal.h ./kernel/cred.c ./include/linux/cred.h
+#sed -i '/^static bool is_mnt_ns_file(struct dentry \*dentry)/i EXPORT_SYMBOL_GPL(path_umount);' ./fs/namespace.c
 make
+cd ../maggi/
+cp ../sma202f/arch/arm64/boot/Image ./kernel
+../magiskboot-linux/x86_64/magiskboot repack ../boot.img boot.img
+../magiskboot-linux/x86_64/magiskboot sign boot.img ~/certificate.pem
