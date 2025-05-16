@@ -2390,7 +2390,6 @@ SYSCALL_DEFINE1(oldumount, char __user *, name)
 
 #endif
 
-EXPORT_SYMBOL_GPL(path_umount);
 static bool is_mnt_ns_file(struct dentry *dentry)
 {
 	/* Is this a proxy for a mount namespace? */
