@@ -1,19 +1,16 @@
 #!/bin/bash
-#init
+#initkernel
 rm -rf sma202f
 mkdir sma202f
 tar -xzf Kernel.tar.gz -C sma202f
 cd sma202f
-export PLATFORM_VERSION=11
-export ANDROID_MAJOR_VERSION=r
-export ARCH=arm64
-#endinit
-#fixes
+#endinitkernel
+#fixestoolchain
 sed -i '/^YYLTYPE yylloc$/s/^YYLTYPE yylloc$/extern YYLTYPE yylloc/' scripts/dtc/dtc-parser.tab.c_shipped
 sed -i $'/def print_deprecation_warning(self):/,/file=sys.stderr)/c\
   def print_deprecation_warning(self):\
 \tpass' ./toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-g??
-#endfixes
+#endfixestoolchain
 #ksun
 chmod u+w ./drivers/Makefile
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s v1.0.6
@@ -83,36 +80,34 @@ for config in "${CONFIGS[@]}"; do
 done
 #endconfigsksunsusfs
 #tempfixes
-cp ../namei.c.workingcgpt ./fs/namei.c
-cp ../susfs.c.workingcgpt ./fs/susfs.c
-cp ../open.c.workingcgpt ./fs/open.c
-cp ../read_write.c.workingcgpt ./fs/read_write.c
-cp ../apk_sign.c.workingcgpt ./KernelSU-Next/kernel/apk_sign.c
-cp ../namespace.c.working ./fs/namespace.c
-chmod u+w ./kernel/cgroup.c
-cp ../cgroup.c.working ./kernel/cgroup.c
-#modulesnotworkingfix
-chmod u+w ./security/selinux/hooks.c
-cp ../hooks.c.workingf19f ./security/selinux/hooks.c
-cp ../core_hook.c.working ./drivers/kernelsu/core_hook.c
-sed -i -E '/^CONFIG_(TIMA(_LKMAUTH|_LKM_BLOCK)?|UH(_RKP)?|RKP_(KDP|NS_PROT|DMAP_PROT)|FIVE(_(CERT_USER|DEFAULT_HASH(_SHA1)?)?)?|SECURITY_DEFEX|PROCA)=/ { s/^(CONFIG_[A-Z0-9_]+)="[^"]*".*$/# \1 is not set/; s/^(CONFIG_[A-Z0-9_]+)=y$/\1=n/ }' ./arch/arm64/configs/exynos7885-a20e_defconfig
+cp ../namei.c.cgpt ./fs/namei.c
+cp ../susfs.c.working ./fs/susfs.c
+cp ../open.c.working ./fs/open.c
+cp ../read_write.c.working ./fs/read_write.c
+cp ../apk_sign.c.working ./KernelSU-Next/kernel/apk_sign.c
 sed -i '/ksu_handle_execveat_ksud/ s/int[[:space:]]*\*[[:space:]]*fd/int fd/' drivers/kernelsu/ksud.c
+#modulesnotworkingfix
+cp ../namespace.c.chiteroman ./fs/namespace.c
+chmod u+w ./security/selinux/hooks.c
+cp ../hooks.c.f19f ./security/selinux/hooks.c
+cp ../core_hook.c.working ./drivers/kernelsu/core_hook.c
 #endtempfixes
 export PLATFORM_VERSION=11
 export ANDROID_MAJOR_VERSION=r
 export ARCH=arm64
+#removesamsungsecurity may need to adjust; cant get secure folder working cuz /data is encypted?!
+sed -i -E '/^CONFIG_(TIMA(_LKMAUTH|_LKM_BLOCK)?|UH(_RKP)?|RKP_(KDP|NS_PROT|DMAP_PROT)|FIVE(_(CERT_USER|DEFAULT_HASH(_SHA1)?)?)?|SECURITY_DEFEX|PROCA)=/ { s/^(CONFIG_[A-Z0-9_]+)="[^"]*".*$/# \1 is not set/; s/^(CONFIG_[A-Z0-9_]+)=y$/\1=n/ }' ./arch/arm64/configs/exynos7885-a20e_defconfig
 make exynos7885-a20e_defconfig
+#setspoofbuild
 chmod u+w ./scripts/setlocalversion ./scripts/mkcompile_h
 perl -pi -e 's{^UTS_VERSION="\$UTS_VERSION\s+\$CONFIG_FLAGS\s+\$TIMESTAMP"}{UTS_VERSION="#1 SMP PREEMPT Wed Jun 28 08:22:22 +07 2023"}' ./scripts/mkcompile_h
 sed -i '$s|echo "\$res"|echo "-26555245"|' ./scripts/setlocalversion
-export PLATFORM_VERSION=11
-export ANDROID_MAJOR_VERSION=r
-export ARCH=arm64
 #ksun adding functions not working
 chmod u+w ./fs/internal.h ./kernel/cred.c ./include/linux/cred.h
-#sed -i '/^static bool is_mnt_ns_file(struct dentry \*dentry)/i EXPORT_SYMBOL_GPL(path_umount);' ./fs/namespace.c
 make
+#makebootimg
 cd ../maggi/
 cp ../sma202f/arch/arm64/boot/Image ./kernel
 ../magiskboot-linux/x86_64/magiskboot repack ../boot.img boot.img
-../magiskboot-linux/x86_64/magiskboot sign boot.img ~/certificate.pem
+#certificate.pem is made from included verity_dev_keys.x509
+../magiskboot-linux/x86_64/magiskboot sign boot.img ../certificate.pem
